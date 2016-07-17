@@ -3,6 +3,8 @@
 --------------------------------------------------------------------------------------------*/
 
 let player1 = null;
+let allFightersInTable = Array.from(document.querySelectorAll('#fighter-select table tr td'));
+let fighterpics = document.querySelector('#fighter-pics');
 
 /*------------------------------------------------------------------------------------------
 | Eventhandler
@@ -12,6 +14,8 @@ document.querySelector('#create-fighter').addEventListener('click', () => {
     player1 = new Fighter(document.querySelector('#fighterName').value);
     player1.updateList();
 });
+
+
 
 document.querySelector('#fight').addEventListener('click', () => {
    let arena = new Ring();
@@ -24,6 +28,20 @@ document.querySelector('#fight').addEventListener('click', () => {
    }
    
 });
+
+
+allFightersInTable.forEach((element)=>{
+    element.addEventListener('click', () =>{
+        //TODO: Behavior if the User selects a character.
+    });
+    
+    element.addEventListener('mouseover', ()=>{
+        fighterpics.children[0].setAttribute("src",element.children[0].getAttribute('src'));
+        
+    });
+})
+
+
 
 
 

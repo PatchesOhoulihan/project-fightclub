@@ -6,6 +6,8 @@
 'use strict';
 
 var player1 = null;
+var allFightersInTable = Array.from(document.querySelectorAll('#fighter-select table tr td'));
+var fighterpics = document.querySelector('#fighter-pics');
 
 /*------------------------------------------------------------------------------------------
 | Eventhandler
@@ -24,4 +26,14 @@ document.querySelector('#fight').addEventListener('click', function () {
     } else {
         arena.battle(player1, new Fighter('dummy'));
     }
+});
+
+allFightersInTable.forEach(function (element) {
+    element.addEventListener('click', function () {
+        //TODO: Behavior if the User selects a character.
+    });
+
+    element.addEventListener('mouseover', function () {
+        fighterpics.children[0].setAttribute("src", element.children[0].getAttribute('src'));
+    });
 });
