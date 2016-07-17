@@ -1,0 +1,165 @@
+
+/*------------------------------------------------------------------------------------------
+| Class Definition
+--------------------------------------------------------------------------------------------*/
+
+class Fighter{
+    constructor(x){
+        this.name = x;
+        this.str = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+        this.dex = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+        this.hp = 100;
+        this.dmg ="Pacifist";
+        this.moveSet = ["Tritt in die Eier", "Kopfnuss","Schag ins Gesicht",];
+        this.failMoves = ["Poppelt in der Nase", "Fällt über die eigenen Füße","Ballert sich in die Hose","Macht den Helicopter","Fängt manisch an zu lachen"];
+        
+        //If you define a variable with a let the Variable is declared private.
+        let hf= 12;
+        this.hit = (opponent) => {
+            let dmg = Math.floor(Math.random() * (this.str - this.str/4 + 1) + this.str/4);
+            let result = [];
+            
+            
+            let evadeChance = opponent.dex * (Math.random()*8);
+            if(evadeChance <= 50){
+                opponent.hp -= dmg;
+                //console.log("HIT!: " + dmg);
+                //console.log("HP!: " + opponent.hp);
+                result = ["Hit",this.name,dmg,this.moveSet[Math.floor(Math.random() * this.moveSet.length)]];
+                
+            }
+            else{
+                //console.log("MISS!");
+                //console.log(hf);
+                result = ["Miss",this.name,0,this.failMoves[Math.floor(Math.random() * this.failMoves.length)]];
+            }
+            
+            return result;
+        }
+        
+        this.updateList = () => {
+            let list = document.querySelector('#player ul');
+            list.children[0].children[0].innerHTML = this.name;
+            list.children[1].children[0].innerHTML = this.str;
+            list.children[2].children[0].innerHTML = this.dex;
+            list.children[3].children[0].innerHTML = this.hp;
+        }
+    }
+};
+
+
+
+
+class Ring{
+    constructor(){
+        //Vars
+        this.battleMessages = [];
+        let firstHitter;
+        let secondHitter;
+        
+        //Methodes
+        
+         this.writeBattleLog = () =>{
+            let list = document.querySelector('#fightstatus');
+            
+            for(let i = 0; i < this.battleMessages.length; i++){
+                list.children[0].children[i].children[0].innerHTML = this.battleMessages[i];
+            }
+        }
+        
+        
+        this.battle = (player1,player2) => {
+            
+            if(Math.random() * 2 <= 1)
+            {
+                this.firstHitter = player1;
+                this.secondHitter = player2;
+                
+                //console.log(player1.name + " Attacks First!");
+            }
+            else{
+                this.firstHitter = player2;
+                this.secondHitter = player1;
+                //console.log(player2.name + " Attacks First!");
+            }
+            
+            battleLog([this.firstHitter.name, "", "Attacasdks First!"]);
+            mainBattle(player1,player2);
+        }
+        
+        let mainBattle = (player1,player2) =>{
+            if(player1.hp >= 0 && player2.hp >= 0){
+                this.firstHitter.hit(this.secondHitter);
+                
+                if((Math.random() * 6) <= 3){
+                    battleLog(this.firstHitter.hit(this.secondHitter));
+                    //console.log(this.firstHitter.name + " lands a nice blow!");
+                }
+                else{
+                    battleLog(this.secondHitter.hit(this.firstHitter));
+                    //console.log(this.secondHitter.name + " lands a nice blow!");
+                }
+                this.writeBattleLog();
+                setTimeout(mainBattle, 500, player1, player2);
+            }
+        }
+        
+        //Keeps an Messagequeue with 10 Messages max
+        let battleLog = (newMessage) => {
+            console.log("Add this to battleLog: " + newMessage);
+            
+            if(this.battleMessages.length == 10){
+                this.battleMessages.shift();
+                this.battleMessages.push(newMessage);
+            }
+            else
+            {
+                this.battleMessages.push(newMessage);
+            }
+        }
+        
+    }
+}
+
+
+/*------------------------------------------------------------------------------------------
+| Variables
+--------------------------------------------------------------------------------------------*/
+
+let player1 = null;
+
+/*------------------------------------------------------------------------------------------
+| Eventhandler
+--------------------------------------------------------------------------------------------*/
+
+//document.getElementById('#create-fighter').addEventListener('click', () => {
+//    player1 = new Fighter(document.querySelector('#player ul'));
+//    player1.updateList();
+//});
+
+document.querySelector('#create-fighter').addEventListener('click', () => {
+    player1 = new Fighter(document.querySelector('#fighterName').value);
+    player1.hit(new Fighter('hitter'));
+    player1.updateList();
+});
+
+document.querySelector('#fight').addEventListener('click', () => {
+   let arena = new Ring();
+    
+   if((typeof player1) == null){
+       console.log("Create a player first:");
+   }
+   else{
+       arena.battle(player1, new Fighter('dummy'));
+   }
+   
+});
+
+
+/*------------------------------------------------------------------------------------------
+| Main
+--------------------------------------------------------------------------------------------*/
+
+
+
+
