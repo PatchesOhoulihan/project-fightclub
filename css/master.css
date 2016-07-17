@@ -2,6 +2,25 @@
 /*-----------------------------------------------------------------------------------------
 | Content
 ------------------------------------------------------------------------------------------*/
+#fighter-select table {
+  border: 2px solid black;
+}
+#fighter-select tr td {
+  border: 2px solid black;
+  min-height: 70px;
+  min-width: 70px;
+}
+#fighter-select tr td:hover {
+  border: 3px solid red;
+}
+#fighter-select tr td img {
+  width: 70px;
+  height: 70px;
+}
+#fighter-pics img {
+  width: 200px;
+  height: 200px;
+}
 /*-----------------------------------------------------------------------------------------
 | Fonts
 ------------------------------------------------------------------------------------------*/

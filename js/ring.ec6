@@ -1,0 +1,74 @@
+class Ring{
+    constructor(){
+        //----------------------------------------------------Vars----------------------------------------------------
+        
+        this.battleMessages = [];
+        let firstHitter;
+        let secondHitter;
+        
+        //---------------------------------------------Private Methodes-----------------------------------------------
+        
+         let writeBattleLog = () =>{
+            let list = document.querySelector('#fightstatus');
+            
+            for(let i = 0; i < this.battleMessages.length; i++){
+                list.children[0].children[i].children[0].innerHTML = this.battleMessages[i];
+            }
+        }
+        
+         let mainBattle = (player1,player2) =>{
+            if(player1.hp >= 0 && player2.hp >= 0){
+                this.firstHitter.hit(this.secondHitter);
+                
+                if((Math.random() * 6) <= 3){
+                    battleLog(this.firstHitter.hit(this.secondHitter));
+                    //console.log(this.firstHitter.name + " lands a nice blow!");
+                }
+                else{
+                    battleLog(this.secondHitter.hit(this.firstHitter));
+                    //console.log(this.secondHitter.name + " lands a nice blow!");
+                }
+                writeBattleLog();
+                setTimeout(mainBattle, 500, player1, player2);
+            }
+        }
+        
+        //Keeps an Messagequeue with 10 Messages max
+        let battleLog = (newMessage) => {
+            console.log("Add this to battleLog: " + newMessage);
+            
+            if(this.battleMessages.length == 10){
+                this.battleMessages.shift();
+                this.battleMessages.push(newMessage);
+            }
+            else
+            {
+                this.battleMessages.push(newMessage);
+            }
+        }
+        
+        //---------------------------------------------Public Methodes-----------------------------------------------
+        
+        this.battle = (player1,player2) => {
+            
+            if(Math.random() * 2 <= 1)
+            {
+                this.firstHitter = player1;
+                this.secondHitter = player2;
+                
+                //console.log(player1.name + " Attacks First!");
+            }
+            else{
+                this.firstHitter = player2;
+                this.secondHitter = player1;
+                //console.log(player2.name + " Attacks First!");
+            }
+            
+            battleLog([this.firstHitter.name, "", "Attacasdks First!"]);
+            mainBattle(player1,player2);
+        }
+        
+        
+        
+    }
+}

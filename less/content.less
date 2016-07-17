@@ -3,3 +3,34 @@
 /*-----------------------------------------------------------------------------------------
 | Content
 ------------------------------------------------------------------------------------------*/
+
+
+#fighter-select{
+    table{
+        border: 2px solid black;
+    }
+    tr{
+        td{
+            border: 2px solid black;
+            min-height: @fighterPicWidth;
+            min-width: @fighterPicHeight;
+            
+            &:hover{
+                border: 3px solid red;
+            }
+            
+            img{
+                width: @fighterPicWidth;
+                height: @fighterPicHeight;
+            }
+        }
+    }
+    
+}
+
+#fighter-pics{
+    img{
+        width: 200px;
+        height: 200px;
+    }  
+}

@@ -2,14 +2,35 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/master.css">
-    <script src="js/main.ec6" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/fighter.js" defer></script>
+    <script src="js/ring.js" defer></script>
     <meta charset="UTF-8">
     <title>Fight Club</title>
 </head>
 <body>
     <div id="site-wrapper">
         <h2>Fightclub!</h2>
-        
+        <div id="fighter-pics">
+            <img src="images/ryu.jpg" alt="Pic of Player 1">
+            <img src="images/sagat.jpg" alt="Pic of Player 2">
+        </div>
+        <div id="fighter-select">
+            <table>
+                <tr>
+                    <td id="fighter-1"><img src="images/ryu.jpg" alt=""></td>
+                    <td id="fighter-2"><img src="images/gtadude.jpg" alt=""></td>
+                    <td id="fighter-3"><img src="images/sagat.jpg" alt=""></td>
+                    <td id="fighter-4"><img src="images/wire.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td id="fighter-5"><img src="images/zang.jpg" alt=""></td>
+                    <td id="fighter-6"><img src="images/sagat.jpg" alt=""></td>
+                    <td id="fighter-7"><img src="images/gtadude.jpg" alt=""></td>
+                    <td id="fighter-8"><img src="images/wire.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
 <!--    Wenn die die Verarbeitung des Formulars im Frontend erfolgt wird eine # eingefügt    -->
         <form action="#" method="post">
             <input type="text" name="name" id="fighterName" placeholder="Name des Kämpfers">

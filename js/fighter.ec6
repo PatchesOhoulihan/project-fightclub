@@ -1,0 +1,43 @@
+class Fighter{
+    constructor(x){
+        this.name = x;
+        this.str = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+        this.dex = Math.floor(Math.random() * (30 - 10 + 1)) + 10;
+        this.hp = 100;
+        this.dmg ="Pacifist";
+        this.moveSet = ["Tritt in die Eier", "Kopfnuss","Schag ins Gesicht",];
+        this.failMoves = ["Poppelt in der Nase", "Fällt über die eigenen Füße","Ballert sich in die Hose","Macht den Helicopter","Fängt manisch an zu lachen"];
+        
+        //If you define a variable with a let the Variable is declared private.
+        let hf= 12;
+        this.hit = (opponent) => {
+            let dmg = Math.floor(Math.random() * (this.str - this.str/4 + 1) + this.str/4);
+            let result = [];
+            
+            
+            let evadeChance = opponent.dex * (Math.random()*8);
+            if(evadeChance <= 50){
+                opponent.hp -= dmg;
+                //console.log("HIT!: " + dmg);
+                //console.log("HP!: " + opponent.hp);
+                result = ["Hit",this.name,dmg,this.moveSet[Math.floor(Math.random() * this.moveSet.length)]];
+                
+            }
+            else{
+                //console.log("MISS!");
+                //console.log(hf);
+                result = ["Miss",this.name,0,this.failMoves[Math.floor(Math.random() * this.failMoves.length)]];
+            }
+            
+            return result;
+        }
+        
+        this.updateList = () => {
+            let list = document.querySelector('#player ul');
+            list.children[0].children[0].innerHTML = this.name;
+            list.children[1].children[0].innerHTML = this.str;
+            list.children[2].children[0].innerHTML = this.dex;
+            list.children[3].children[0].innerHTML = this.hp;
+        }
+    }
+};
