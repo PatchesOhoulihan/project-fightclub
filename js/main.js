@@ -37,3 +37,9 @@ allFightersInTable.forEach(function (element) {
         fighterpics.children[0].setAttribute("src", element.children[0].getAttribute('src'));
     });
 });
+
+document.querySelector('#story-mode').addEventListener('click', function () {
+    document.querySelector('#player-select-menu').classList.remove('hidden');
+    console.log('Try to show the playerselect screen.');
+    document.querySelector('#modes').classList.add('hidden');
+});

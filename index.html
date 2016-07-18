@@ -11,11 +11,28 @@
 <body>
     <div id="site-wrapper">
         <h2>Fightclub!</h2>
-        <div id="fighter-pics">
+        <!--    
+            #################################################Select a Mode############################################################
+        -->
+        <div id="modes">
+            <button id="story-mode">Story Mode</button>
+            <button id="arcade">Arcade</button>
+            <button id="2-player-mode">2 Player</button>
+            <button id="Training">Training</button>
+        <!--    Wenn die die Verarbeitung des Formulars im Frontend erfolgt wird eine # eingefügt    -->
+            <form action="#" method="post">
+                <input type="text" name="name" id="fighterName" placeholder="Name des Kämpfers">
+                <button type="button" id="create-fighter">Create Fighter!</button>
+            </form>
+        </div>
+                <!--    
+            #################################################Player Select############################################################
+        -->
+        <div id="player-select-menu" class="hidden">
+            <div id="fighter-pics">
             <img id="fighter-pic-1" src="images/ryu.jpg" alt="Pic of Player 1">
             <img src="images/sagat.jpg" alt="Pic of Player 2">
-        </div>
-        <div id="fighter-select">
+            <div id="fighter-select">
             <table>
                 <tr>
                     <td id="fighter-1"><img src="images/ryu.jpg" alt=""></td>
@@ -31,13 +48,13 @@
                 </tr>
             </table>
         </div>
-<!--    Wenn die die Verarbeitung des Formulars im Frontend erfolgt wird eine # eingefügt    -->
-        <form action="#" method="post">
-            <input type="text" name="name" id="fighterName" placeholder="Name des Kämpfers">
-            <button type="button" id="create-fighter">Create Fighter!</button>
-        </form>
-        
-        <div id="content">
+        </div>
+        </div>
+         <!--    
+            #################################################Battle States############################################################
+        -->
+        <div id="battle-stats" class="hidden">
+            <div id="content">
             <div id="player">
                 <ul>
                     <li>
@@ -88,6 +105,8 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        
             <button type="button" id="fight">Battletime!</button>
         </div>
     </div>
