@@ -4,6 +4,8 @@
 ------------------------------------------------------------------------------------------*/
 #fighter-select table {
   border: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
 }
 #fighter-select tr td {
   border: 4px solid black;
@@ -17,12 +19,26 @@
   width: 100px;
   height: 100px;
 }
+#fighter-pics {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
 #fighter-pics img {
   width: 300px;
   height: 300px;
 }
+#fighter-pics #fighter-pic-1 {
+  float: left;
+}
+#fighter-pics #fighter-pic-2 {
+  float: right;
+}
 .hidden {
   display: none;
+}
+#site-wrapper {
+  max-width: 960px;
+  margin: 0 auto 0 auto;
 }
 /*-----------------------------------------------------------------------------------------
 | Fonts

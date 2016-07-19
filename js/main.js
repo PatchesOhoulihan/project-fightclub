@@ -30,7 +30,9 @@ document.querySelector('#fight').addEventListener('click', function () {
 
 allFightersInTable.forEach(function (element) {
     element.addEventListener('click', function () {
-        //TODO: Behavior if the User selects a character.
+        player1 = createFighter(element.id);
+        document.querySelector('#fighter-select').classList.add('hidden');
+        document.querySelector('#battle-stats').classList.remove('hidden');
     });
 
     element.addEventListener('mouseover', function () {
