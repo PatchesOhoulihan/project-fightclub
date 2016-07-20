@@ -31,7 +31,7 @@ document.querySelector('#fight').addEventListener('click', function () {
 allFightersInTable.forEach(function (element) {
     element.addEventListener('click', function () {
         player1 = createFighter(element.id);
-
+        showOfSecondPlayer();
         document.querySelector('#fighter-select').classList.add('hidden');
         document.querySelector('#battle-stats').classList.remove('hidden');
     });
@@ -48,5 +48,6 @@ document.querySelector('#story-mode').addEventListener('click', function () {
 });
 
 var showOfSecondPlayer = function showOfSecondPlayer() {
-    document.querySelector("fighter-" + Math.round(Math.random()) * allFightersInTable.length);
+    console.log("this one is your opponent fighter-" + Math.round(Math.random() * allFightersInTable.length));
+    document.querySelector("#fighter-" + Math.round(Math.random() * allFightersInTable.length)).classList.add('blueBorder');
 };

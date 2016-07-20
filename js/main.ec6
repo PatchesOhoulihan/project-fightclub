@@ -33,7 +33,7 @@ document.querySelector('#fight').addEventListener('click', () => {
 allFightersInTable.forEach((element)=>{
     element.addEventListener('click', () =>{
         player1 = createFighter(element.id);
-        
+        showOfSecondPlayer();
         document.querySelector('#fighter-select').classList.add('hidden');
         document.querySelector('#battle-stats').classList.remove('hidden');
     });
@@ -52,7 +52,9 @@ document.querySelector('#story-mode').addEventListener('click', () =>{
 
 
 let showOfSecondPlayer = () => {
-    document.querySelector("fighter-" + Math.round(Math.random()) * allFightersInTable.length)
+    console.log("this one is your opponent fighter-" + Math.round(Math.random() * allFightersInTable.length));
+    document.querySelector("#fighter-" + Math.round(Math.random() * allFightersInTable.length)).classList.add('blueBorder');
+    
 }
 
 
